@@ -2,14 +2,14 @@
   <div class="App">
     <div class="container mx-auto flex flex-col items-center bg-gray-100 p-4">
       <div class="container">
-        <cAddCoin @addCoin = 'addCoin'/>
-        <hr class="w-full border-t border-gray-600 my-4" />
+        <cAddCoin @addCoin = 'addCoin' />
+        <hr v-if="names_coin.length" class="w-full border-t border-gray-600 my-4" />
         <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-          <cCardCoin/>
-          <cCardCoin/>
+          <cCardCoin v-for="(card,inx) in names_coin" :key="inx" :name_card="card" :name_space="names_space[inx]"/>
+          <!-- <cCardCoin/>
           <cCardCoin/>
           <cCardCoin class="border-4 "/>
-          <cCardCoin class=""/>
+          <cCardCoin class=""/> -->
         </div>
         <hr class="w-full border-t border-gray-600 my-4" />
         <cInfoCoin/>
@@ -22,11 +22,13 @@
 import cAddCoin from './components/c-add-coin.vue';
 import cCardCoin from './components/c-card-coin.vue'
 import cInfoCoin from './components/c-info-coin.vue'
+
 export default {
   name: 'App',
   data(){
     return{
-      name_coin:''
+      names_space: [],
+      names_coin: [],
     }
   },
   components: {
@@ -35,12 +37,13 @@ export default {
     cInfoCoin
   },
   methods:{
-    addCoin(data){
-      this.name_coin = data
-    }
+    addCoin(data, name){
+      this.names_space.push(name)
+      this.names_coin.push(data)
+    },
   },
   mounted(){
-    
+
   }
 }
 </script>

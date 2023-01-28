@@ -29,7 +29,7 @@
               CHD
             </span>
           </div>
-          <div class="text-sm text-red-600">Такой тикер уже добавлен</div>
+          <div class="text-sm text-red-600">{{error}}</div>
         </div>
       </div>
       <button @click="addCoin"
@@ -55,17 +55,30 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'c-add-coin',
     data(){
         return{
-            name_coin: ''
+            name_coin: '',
+            info_coin: [],
+            error: ''
         }
     },
     methods:{
-        addCoin(){
-            this.$emit('addCoin', this.name_coin)
-            this.name_coin = ''
+        async addCoin(){
+            if(this.name_coin == ''){
+                this.error = 'Напишите название криптоволюты!'
+                this.name_coin = ''
+
+            }else{
+                const api = await axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms='+ this.name_coin +'&tsyms=USD&api_key=9f936104af548f59ac7ae1e52d6a42c2a2ba478b2a256ba0712c05b0810c4e25')
+                this.info_coin = api
+                this.$emit('addCoin', this.info_coin.data, this.name_coin)
+
+                this.name_coin = ''
+            }
+            
         },
         clickOn(data){
             this.name_coin = ''
