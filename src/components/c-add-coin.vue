@@ -7,6 +7,7 @@
           >
           <div class="mt-1 relative rounded-md shadow-md">
             <input
+              v-model="name_coin"
               type="text"
               name="wallet"
               id="wallet"
@@ -15,23 +16,23 @@
             />
           </div>
           <div class="flex bg-white shadow-md p-1 rounded-md shadow-md flex-wrap">
-            <span class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
+            <span @click="clickOn('BTC')" class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
               BTC
             </span>
-            <span class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
+            <span @click="clickOn('DOGE')" class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
               DOGE
             </span>
-            <span class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
+            <span @click="clickOn('BCH')" class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
               BCH
             </span>
-            <span class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
+            <span @click="clickOn('CHD')" class="inline-flex items-center px-2 m-1 rounded-md text-xs font-medium bg-gray-300 text-gray-800 cursor-pointer">
               CHD
             </span>
           </div>
           <div class="text-sm text-red-600">Такой тикер уже добавлен</div>
         </div>
       </div>
-      <button
+      <button @click="addCoin"
         type="button"
         class="my-4 inline-flex items-center py-2 px-4 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-full text-white bg-gray-600 hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
       >
@@ -55,7 +56,22 @@
 
 <script>
 export default {
-    name: 'c-add-coin'
+    name: 'c-add-coin',
+    data(){
+        return{
+            name_coin: ''
+        }
+    },
+    methods:{
+        addCoin(){
+            this.$emit('addCoin', this.name_coin)
+            this.name_coin = ''
+        },
+        clickOn(data){
+            this.name_coin = ''
+            this.name_coin = data
+        }
+    }
 
 }
 </script>
