@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="App">
+    <div class="container mx-auto flex flex-col items-center bg-gray-100 p-4">
+      <div class="container">
+        <cAddCoin/>
+        <hr class="w-full border-t border-gray-600 my-4" />
+        <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <cCardCoin/>
+          <cCardCoin/>
+          <cCardCoin/>
+          <cCardCoin class="border-4 "/>
+          <cCardCoin class=""/>
+        </div>
+        <hr class="w-full border-t border-gray-600 my-4" />
+        <cInfoCoin/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import cAddCoin from './components/c-add-coin.vue';
+import cCardCoin from './components/c-card-coin.vue'
+import cInfoCoin from './components/c-info-coin.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    cAddCoin,
+    cCardCoin,
+    cInfoCoin
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './styles/app.css';
 </style>
