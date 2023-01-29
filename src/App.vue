@@ -4,7 +4,6 @@
       <div class="container">
         <cAddCoin @addCoin = 'addCoin' />
         <hr v-if="names_coin.length" class="w-full border-t border-gray-600 my-4" />
-        {{ inx }}
         <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">  
           <cCardCoin v-for="(card,inx) in names_coin" :key="inx" :name_card="card" :name_space="names_space[inx]" @activeCoin="activeCoin" @delCoin="delCoin(inx)"/>
           <!-- <cCardCoin/>
@@ -50,8 +49,9 @@ export default {
       this.active=data
     },
     delCoin(data){
-      this.inx = data
-      this.names_coin.splice(data,1)
+      this.inx = data;
+      this.names_coin.splice(data,1);
+      this.names_space.splice(data,1);
     }
   },
 }
