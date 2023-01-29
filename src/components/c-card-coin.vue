@@ -1,6 +1,6 @@
 <template>
-<div class="bg-white overflow-hidden shadow rounded-lg border-purple-800 border-solid cursor-pointer">
-    <div class="px-4 py-5 sm:p-6 text-center" >
+<div class="bg-white overflow-hidden shadow rounded-lg border-purple-800 border-solid cursor-pointer" :class="{'border-4': isActive }">
+    <div class="px-4 py-5 sm:p-6 text-center" @click="borderTrue">
         <dt class="text-sm font-medium text-gray-500 truncate">{{ name_space}} - USD</dt>
         <dd class="mt-1 text-3xl font-semibold text-gray-900">{{ name_card[name_space]['USD']}}</dd>
     </div>
@@ -20,17 +20,30 @@
               ></path></svg>Удалить
     </button>
 </div>
+
 </template>
 
 <script>
 export default {
     name:'c-card-coin',
+    components:{
+    },  
     data(){
         return{
+            isActive: false,
+            show: false
         }
     },
-    props: ['name_card', 'name_space']
-
+    props: ['name_card', 'name_space'],
+    methods:{
+        borderTrue(){
+            if(this.isActive == false){
+                this.isActive = true
+            }else{
+                this.isActive = false
+            }
+        }
+    }
     }
 </script>
 

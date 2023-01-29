@@ -4,15 +4,15 @@
       <div class="container">
         <cAddCoin @addCoin = 'addCoin' />
         <hr v-if="names_coin.length" class="w-full border-t border-gray-600 my-4" />
-        <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        
+        <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">  
           <cCardCoin v-for="(card,inx) in names_coin" :key="inx" :name_card="card" :name_space="names_space[inx]"/>
           <!-- <cCardCoin/>
           <cCardCoin/>
           <cCardCoin class="border-4 "/>
           <cCardCoin class=""/> -->
         </div>
-        <hr class="w-full border-t border-gray-600 my-4" />
-        <cInfoCoin/>
+          <!-- <cInfoCoin/> -->
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
 <script>
 import cAddCoin from './components/c-add-coin.vue';
 import cCardCoin from './components/c-card-coin.vue'
-import cInfoCoin from './components/c-info-coin.vue'
+// import cInfoCoin from './components/c-info-coin.vue'
 
 export default {
   name: 'App',
@@ -33,8 +33,8 @@ export default {
   },
   components: {
     cAddCoin,
-    cCardCoin,
-    cInfoCoin
+    cCardCoin
+    // cInfoCoin
   },
   methods:{
     addCoin(data, name){
