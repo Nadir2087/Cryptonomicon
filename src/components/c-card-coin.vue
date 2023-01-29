@@ -30,8 +30,7 @@ export default {
     },  
     data(){
         return{
-            isActive: false,
-            show: false
+            isActive: false
         }
     },
     props: ['name_card', 'name_space'],
@@ -39,8 +38,12 @@ export default {
         borderTrue(){
             if(this.isActive == false){
                 this.isActive = true
+                this.$emit('activeCoin', true)
+
             }else{
                 this.isActive = false
+                this.$emit('activeCoin',false)
+
             }
         }
     }
