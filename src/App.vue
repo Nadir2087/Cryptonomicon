@@ -4,9 +4,9 @@
       <div class="container">
         <cAddCoin @addCoin = 'addCoin' />
         <hr v-if="names_coin.length" class="w-full border-t border-gray-600 my-4" />
-        {{ delInx }}
+        
         <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">  
-          <cCardCoin v-for="(card,inx) in names_coin" :key="inx" :name_card="card" :name_space="names_space[inx]" @activeCoin="activeCoin" @delCard="delCard(inx)"/>
+          <cCardCoin v-for="(card,inx) in names_coin" :key="inx" :name_card="card" :name_space="names_space[inx]" @activeCoin="activeCoin"/>
           <!-- <cCardCoin/>
           <cCardCoin/>
           <cCardCoin class="border-4 "/>
@@ -32,8 +32,7 @@ export default {
     return{
       names_space: [],
       names_coin: [],
-      active: false,
-      delInx: 0
+      active: false
     }
   },
   components: {
@@ -48,11 +47,11 @@ export default {
     },
     activeCoin(data){
       this.active=data
-    },
-    delCard(data){
-      this.delInx = data
     }
   },
+  mounted(){
+
+  }
 }
 </script>
 

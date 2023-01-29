@@ -74,7 +74,7 @@ export default {
             }else{
                 const api = await axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms='+ this.name_coin +'&tsyms=USD&api_key=9f936104af548f59ac7ae1e52d6a42c2a2ba478b2a256ba0712c05b0810c4e25')
                 this.info_coin = api
-                this.$emit('addCoin', this.info_coin.data, this.name)
+                this.$emit('addCoin', this.info_coin.data, this.name_coin)
 
                 this.name_coin = ''
             }

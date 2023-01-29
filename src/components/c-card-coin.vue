@@ -5,7 +5,7 @@
         <dd class="mt-1 text-3xl font-semibold text-gray-900">{{ name_card[name_space]['USD']}}</dd>
     </div>
     <div class="w-full border-t border-gray-200"></div>
-    <button @click="delCard" class="flex items-center justify-center font-medium w-full bg-gray-100 px-4 py-4 sm:px-6 text-md text-gray-500 hover:text-gray-600 hover:bg-gray-200 hover:opacity-20 transition-all focus:outline-none">
+    <button class="flex items-center justify-center font-medium w-full bg-gray-100 px-4 py-4 sm:px-6 text-md text-gray-500 hover:text-gray-600 hover:bg-gray-200 hover:opacity-20 transition-all focus:outline-none">
             <svg
               class="h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -45,9 +45,6 @@ export default {
                 this.$emit('activeCoin',false)
 
             }
-        },
-        delCard(){
-            this.$emit('delCard')
         }
     }
     }
